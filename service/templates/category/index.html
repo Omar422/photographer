@@ -1,0 +1,24 @@
+<h2>Categories Page</h2>
+
+
+{% if user.is_authenticated %}
+<!-- {{user_profile}} -->
+<a href="{% url 'accounts:profile' profile_slug %}">Profile</a>
+<a href="{% url 'orders:order_list' %}">Cart</a>
+<a href="accounts/logout">Logout</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+<a href="{% url 'accounts:signup' %}">Signup</a>
+{% endif %}
+
+
+{% for category in categories %}
+<p>
+    <a href="{% url 'category_details' category.category_slug %}">
+        <img src="{{category.category_image.url}}" width="200" height="200" alt="{{category}}" title="{{category}}">
+    </a>
+</p>
+<p>
+    <a href="{% url 'category_details' category.category_slug %}" target="_blank">{{category}}</a>
+</p>
+{% endfor %}

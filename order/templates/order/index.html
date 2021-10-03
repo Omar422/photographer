@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <center>
+        <a href="/">Home</a>
+        <h2>Cart Page</h2>
+
+        {% if not orders %}
+
+        <p>No Orders Yet..! <a href="{% url 'services:services_list' %}">Check Our Service</a></p>
+
+        {% else %}
+
+        <table>
+            <thead>
+                <td>Service</td>
+                <td>Price</td>
+                <td>Status</td>
+                <td>Delete</td>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>
+                        <a target="_blank"
+                            href="{% url 'services:service_details' order.order_service.service_slug %}">{{order.order_service}}</a>
+
+                    </td>
+                    <td>
+                        {{order.order_service.service_price}}
+                    </td>
+                    <td>
+                        {{order.order_status}}
+                    </td>
+                    <td>
+                        <a href="{% url 'orders:delete_order' order.id %}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th>Total:</th>
+                    <td colspan="2">{{total_price}}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endif %}
+    </center>
+</div>
+{% endblock content %}
