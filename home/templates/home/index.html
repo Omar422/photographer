@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block upper-navbar %}
+{% endblock upper-navbar %}
+
+{% block slider %}
+<div class="slider main-slider">
+    <div id="main-slider" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+            <h1>
+                وثق معنا أجمل لحظات العمر
+                <i class="fas fa-heart" style="color:red"></i>
+            </h1>
+
+            <div class="overlay"></div>
+
+            {% for image in images %}
+            <div class="carousel-item" style="background-image: url('{{image.slider_image.url}}');">
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <ol class="carousel-indicators">
+            {% for i in imgs_len %}
+            <li class="rounded-circle" data-target="#main-slider" data-slide-to="{{i}}"></li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+{% endblock slider %}
+
+{% block content %}
+<div class=container>
+    <section class="statistics text-center m-5">
+        <article class="row am-row">
+            <article class="col-sm-12 col-md-4">
+                <header>
+                    <span style="font-size: 48px; color: firebrick;">
+                        <i class="fas fa-camera fa-2x"></i>
+                    </span>
+                </header>
+                <h2>
+                    > 50
+                </h2>
+                <h4>مشروع منفذ</h4>
+            </article>
+            <article class="col-sm-12 col-md-4">
+                <header>
+                    <span style="font-size: 48px; color: firebrick;">
+                        <i class="fas fa-handshake fa-2x"></i>
+                    </span>
+                </header>
+                <h2>
+                    > 50
+                </h2>
+                <h4>شريك نجاح</h4>
+            </article>
+            <article class="col-sm-12 col-md-4">
+                <header>
+                    <span style="font-size: 48px; color: firebrick;">
+                        <i class="fas fa-building fa-2x"></i>
+                    </span>
+                </header>
+                <h2>
+                    > 10
+                </h2>
+                <h4>جهة حكومية</h4>
+            </article>
+        </article>
+    </section>
+</div>
+
+<section class="partners text-center mb-5 ">
+    <header class="mb-5">
+        <h2>أبرز شركاء النجاح</h2>
+    </header>
+    <div class="owl-carousel owl-theme">
+        {% for partner in partners %}
+        <div class="item">
+            <a target="_blank" href="{{partner.partner_image.url}}">
+                <img src="{{partner.partner_image.url}}" alt="{{partner.partner_name}}"
+                    title="{{partner.partner_name}}">
+            </a>
+        </div>
+        {% endfor %}
+</section>
+
+{% endblock content %}

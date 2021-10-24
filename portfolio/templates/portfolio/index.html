@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class=container>
+  <section class="portfolio mt-5 text-center">
+    <header id="portfolio">
+      <h2>أعمالنا &hearts; </h2>
+      <ul class="list-unstyled row text-center m-5 categories">
+        <li data-class="all" class="col-md active">الكل</li>
+        {% for category in categories %}
+        <li data-class=".category_{{category.id}}" class="col-md">
+          {{category.category_name}}
+        </li>
+        {% endfor %}
+        <!-- <li data-class=".{{work.portfolio_category}}" class="col-md">الفيديوهات</li> -->
+      </ul>
+    </header>
+    <section class="event accordion" id="my_portfolio">
+      {% for work in portfolio %}
+      <article class="card category_{{work.portfolio_category.id}} event-card">
+        <header class="card-header" id="heading{{work.id}}">
+          <h2 class="mb-0">
+            <span data-class=".category_{{work.portfolio_category.id}}" class="category-tag badge badge-pill">
+              {{work.portfolio_category}}
+            </span>
+            <button class="btn btn-link btn-block text-right" type="button" data-toggle="collapse"
+              data-target="#collapse{{work.id}}" aria-expanded="true" aria-controls="collapse{{work.id}}">
+              {{work.portfolio_title}}
+            </button>
+          </h2>
+        </header>
+        <article id="collapse{{work.id}}" class="collapse" aria-labelledby="heading{{work.id}}"
+          data-parent="#my_portfolio">
+          <div class="card-body">
+            <p>{{work.portfolio_description}}</p>
+            <p>لمشاهدة الصور الخاصة بالعمل يرجى الضغط على
+              <a href="{{work.portfolio_images}}" target="_blank">
+                الرابط <i class="fas fa-images"></i>
+              </a>
+            </p>
+            <p>لمشاهدة المونتاج الخاص بالعمل يرجى الضغط على
+              <a href="{{work.portfolio_video}}" target="_blank">
+                الرابط <i class="fas fa-film"></i>
+              </a>
+            </p>
+          </div>
+          <div class="card-footer text-muted">
+            <small class="text-muted">تاريخ التغطية: {{work.portfolio_date|date:"d-m-Y"}}</small>
+          </div>
+        </article>
+      </article>
+      {% endfor %}
+
+      <!-- Pagination for portfolio list -->
+      {% if portfolio.has_other_pages %}
+      <nav class="mt-5">
+        <ul class="pagination justify-content-center ">
+
+          {% if portfolio.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{portfolio.previous_page_number}}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          {% endif %}
+
+          {% for portfolio_id in portfolio.paginator.page_range %}
+          {% if portfolio_id == page_number %}
+          <li class="page-item active">
+            <a class="page-link" href="?page={{portfolio_id}}">{{portfolio_id}}</a>
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{portfolio_id}}">{{portfolio_id}}</a>
+          </li>
+          {% endif %}
+          {% endfor %}
+
+          {% if portfolio.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{portfolio.next_page_number}}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          {% endif %}
+
+        </ul>
+      </nav>
+      {% endif %}
+    </section>
+  </section>
+</div>
+{% endblock content %}

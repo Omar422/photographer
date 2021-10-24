@@ -1,50 +1,67 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <center>
-        <a href="/">Home</a>
-        <h2>Cart Page</h2>
+<div class="container">
+    <section class="orders text-center mt-5">
+        <header class="mb-5">
+            <h2>طلباتي &hearts;</h2>
+            <ul class="list-unstyled row text-center m-5 status">
+                <li data-class="all" class="col-md active">الكل</li>
+                {% for k,v in status %}
+                <li data-class=".status_{{k}}" class="col-md">
+                    {{v}}
+                </li>
+                {% endfor %}
+            </ul>
+        </header>
 
         {% if not orders %}
-
-        <p>No Orders Yet..! <a href="{% url 'services:services_list' %}">Check Our Service</a></p>
+        <p>لم تقم بأي طلب حتى الآن.!! <a href="{% url 'services:services_list' %}">تصفح خدماتنا</a></p>
 
         {% else %}
-
-        <table>
-            <thead>
-                <td>Service</td>
-                <td>Price</td>
-                <td>Status</td>
-                <td>Delete</td>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <th>الخدمة</th>
+                <th>السعر</th>
+                <th>تاريخ رفع الطلب</th>
+                <th>تاريخ المناسبة</th>
+                <th>الحالة</th>
+                <th><i class="fas fa-cog"></i></th>
             </thead>
             <tbody>
                 {% for order in orders %}
-                <tr>
+                <tr class="status_{{order.order_status}}">
                     <td>
-                        <a target="_blank"
-                            href="{% url 'services:service_details' order.order_service.service_slug %}">{{order.order_service}}</a>
-
+                        <a target="_blank" href="{% url 'services:services_list' %}">{{order.order_service}}</a>
                     </td>
                     <td>
-                        {{order.order_service.service_price}}
+                        <small>R.S </small>{{order.order_service.service_price}}
+                    </td>
+                    <td>{{order.order_date_request}}</td>
+                    <td>{{order.order_date_service}}</td>
+                    <td>
+                        {{order.get_order_status_display}}
                     </td>
                     <td>
-                        {{order.order_status}}
-                    </td>
-                    <td>
-                        <a href="{% url 'orders:delete_order' order.id %}">Delete</a>
+                        <a title="حذف الطلب" href="{% url 'orders:delete_order' order.id %}">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
                     </td>
                 </tr>
                 {% endfor %}
-                <tr>
-                    <th>Total:</th>
-                    <td colspan="2">{{total_price}}</td>
-                </tr>
             </tbody>
+            <!-- <tfoot class="mt-5">
+                <tr>
+                    <th class="text-center bg-primary" colspan="2">
+                        الإجمالي
+                    </th>
+                    <th class="text-right bg-primary" colspan="2">
+                        <small>R.S </small> {{total_price}}
+                    </th>
+                </tr>
+            </tfoot> -->
         </table>
         {% endif %}
-    </center>
+    </section>
 </div>
 {% endblock content %}

@@ -17,18 +17,24 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic.base import RedirectView
-from service import views
+# from django.views.generic.base import RedirectView
+from home.views import home_page
+from service.views import (
+    categories_list,
+    category_details
+)
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
-    path('', RedirectView.as_view(url='categories')),
+    # path('', RedirectView.as_view(url='portfolio')),
+    path('', home_page, name='home'),
+    path('portfolio/', include('portfolio.urls', namespace='portfolio')),
     path('services/', include('service.urls', namespace='services')),
     path('cart/', include('order.urls', namespace='orders')),
-    path('categories', views.categories_list, name='categories'),
-    path('categories/<slug:categoryURL>', views.category_details, name='category_details')
+    path('categories', categories_list, name='categories'),
+    path('categories/<slug:categoryURL>', category_details, name='category_details')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

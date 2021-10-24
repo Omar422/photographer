@@ -1,28 +1,33 @@
-<h2>Category Details Page</h2>
-<p>
-    <a href="{% url 'categories' %}">Home</a>
-</p>
+{% extends 'base.html' %}
 
-<h4>Category: {{details}}</h4>
-<p><strong>Description</strong>: {{details.category_description}}</p>
+{% block content %}
+<div class="container">
+    <section class="category_details mt-5 text-center">
+        <header class="mb-5">
+            <h2>خدمات قسم <span>{{details}}</span></h2>
+        </header>
 
-<p>
-    <a href="{{details.category_image.url}}" target="_blank">
-        <img src="{{details.category_image.url}}" width="200" height="200" alt="{{details}}" title="{{details}}">
-    </a>
-</p>
-<h3>Category Services</h3>
-{% for service in services %}
-<hr>
-<div>
-    <p>{{service}}</p>
-    <p>
-        <a href="{% url 'services:service_details' service.service_slug %}">
-            <img src="{{service.service_image.url}}" width="200" height="200" alt="{{service}}" title="{{service}}">
-        </a>
-    </p>
-    <p>
-        <a href="{% url 'services:service_details' service.service_slug %}">Detail</a>
-    </p>
+        <article class="row row-cols-1 row-cols-lg-2">
+            {% for service in services %}
+            <div class="col mb-4">
+                <div class="card p-5 h-100">
+                    <div class="overlay"></div>
+                    <a href="{% url 'services:service_details' service.service_slug %}" class="btn btn-primary">طلب هذه
+                        الخدمة</a>
+                    <figure>
+                        <img height="300" src="{{service.service_image.url}}" alt="{{service}}" class="card-img-top"
+                            title="{{service}}">
+                    </figure>
+                    <div class="card-body">
+                        <h5 class="card-title">{{service}}</h5>
+                        <p class="card-text">{{service.service_description}}</p>
+                        <span class="badge price-tag"><small>R.S </small>{{service.service_price}}</span>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </article>
+    </section>
 </div>
-{% endfor %}
+{% endblock %}

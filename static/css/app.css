@@ -1,0 +1,310 @@
+*,html,body{
+	direction: rtl !important;
+	font-family: 'El Messiri', sans-serif !important;
+}
+
+/*start upper navbar */
+/*end upper navbar */
+
+/* start main navbar */
+/* end main navbar */
+
+/* start slider */
+
+.slider {
+	background-color: #ddd;
+}
+
+.slider .carousel-inner h1 {
+	position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    width: 60%;
+    background-color: #efefef;
+    line-height: 1.8;
+    padding: 13px 0;
+    text-align: center;
+    font-family: 'El Messiri', sans-serif;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #503636;
+    border-radius: 20px;
+}
+
+.slider .carousel-inner .overlay{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	background-color: rgb(0 0 0 / 70%);
+}
+
+.slider .carousel-item {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.slider .carousel .carousel-indicators li{
+	height: 15px;
+    width: 15px;
+}
+
+/* end slider */
+
+/* start mini slider */
+
+/* end mini slider */
+
+/* start login */
+
+.userlogin .loginbg{
+	/* -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; */
+	/* background-image: url('../img/login2.jpg'); */
+}
+
+/* .userlogin .loginbg .overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	background-color: rgb(0 0 0 / 40%);	
+} */
+
+.userlogin .loginbg .loginform {
+	display: block;
+	margin: auto auto;
+	text-align: center;
+}
+
+/* end login */
+
+/***** Start Project App *****/
+
+/* start partners */
+
+.partners {
+	background-color: #efefef;
+	padding: 50px 0;
+}
+
+.partners .owl-carousel .item{
+	width: 200px;
+	height: 200px;
+}
+
+/* end partners */
+
+/***** End Project App *****/
+
+
+/***** Start Portfolio App *****/
+
+/* start list */
+
+.orders ul.status li,
+.services ul.categories li,
+.portfolio ul.categories li {
+	padding: 10px 20px;
+	margin-bottom: 10px;
+	color:darkblue;
+	border: 2px solid darkblue;
+	margin-left:15px;
+	cursor: pointer;
+	font-weight: bold;
+	opacity: 0.3;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.orders ul.status li.active,
+.orders ul.status li:hover,
+.services ul.categories li.active,
+.services ul.categories li:hover,
+.portfolio ul.categories li.active,
+.portfolio ul.categories li:hover {
+	background-color: darkblue;
+	color:azure;
+	opacity: 1;
+}
+
+/* end list */
+
+/*start works*/
+
+.portfolio .event header {
+	position: relative;
+}
+
+.portfolio .event header button:focus,
+/* .portfolio .event header button:visited, */
+.portfolio .event header button:focus-within,
+/* .portfolio .event header button:hover, */
+.portfolio .event header button:not(:disabled):not(.disabled){
+	text-decoration: none;
+	outline: none !important;
+	border: 0 !important;
+	box-shadow: none !important;
+}
+
+.services article .service .card .category-tag,
+.portfolio .event header span {
+	position: absolute !important;
+    cursor: pointer;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.portfolio .event header span {
+	left: 32px;
+    bottom: 13px;
+    padding: 10px 15px;
+	color: #00008b;
+    border: 1px solid #00008b;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.portfolio .event header span.active,
+.portfolio .event header span:hover{
+	background-color: #00008b;
+	color: #ffffff;
+}
+
+.portfolio .event article.event-card{
+	margin-bottom: 10px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 10px;
+}
+
+.portfolio .event article article div.card-body a,
+.portfolio .event article article div.card-body a:visited{
+	text-decoration: none;
+}
+
+/*end works*/
+
+/***** End Portfolio App *****/
+
+/***** Start Service App *****/
+
+/* start categories */
+
+.categories .category figure{
+	margin: 0;
+}
+
+.categories .category figure img {
+	height: 100%;
+	width: 100%;
+}
+
+.services article .service div.card a,
+.category_details article div div.card a{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+	opacity:0;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.services article .service div.card:hover div.overlay,
+.category_details article div div.card:hover div.overlay{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	background-color: rgb(0 0 0 / 15%);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.services article .service .card:hover a,
+.category_details article div .card:hover a{
+	opacity:1 ;
+	z-index: 3;
+}
+
+/* end categories */
+
+/* start services */
+/** links in portfolio css **/
+/** span in portfolio css **/
+
+.category_details article div .card span,
+.services article .service .card span{
+    color: #fff;
+	border-radius: 20px;
+	font-size: 15px;
+	padding: 10px 20px;
+}
+.price-tag{background-color: #00008b;}
+.services article .service .card .category-tag{
+    position: absolute;
+    top: 10px;
+	left: 10px;
+    z-index: 4;
+	border: transparent;
+	background-color: rgba(25, 25, 25, .65);
+	opacity: 0;
+}
+
+.services article .service .card .category-tag.active,
+.services article .service .card .category-tag:hover{
+	background-color: #00008b;
+}
+
+/* end services */
+
+/* start service_details */
+
+.service_details .service{
+	min-height: 350px;
+}
+.service_details .service > div{
+	min-height: 350px;
+}
+
+
+.service_details .service figure{
+	margin: 0;
+}
+
+.service_details .service figure img {
+	height: 100%;
+	width: 100%;
+}
+
+/* start service_details */
+
+/***** Start Service App *****/
+
+/*start override bootstrp*/
+.am-row {
+	margin-right : 0;
+	margin-left : 0;
+}
+
+
+/*end override bootstrp*/

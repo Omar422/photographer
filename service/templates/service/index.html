@@ -1,15 +1,44 @@
-<h2>Services Page</h2>
+{% extends 'base.html' %}
 
-{% for service in services %}
-<div>
-    <p>{{service}}</p>
-    <p>
-        <a href="{% url 'services:service_details' service.service_slug %}">
-            <img src="{{service.service_image.url}}" width="200" height="200" alt="{{service}}" title="{{service}}">
-        </a>
-    </p>
-    <p>
-        <a href="{% url 'services:service_details' service.service_slug %}">Detail</a>
-    </p>
+{% block content %}
+<div class=container>
+    <section class="services text-center mt-5">
+        <header>
+            <h2>خدماتنا &hearts; </h2>
+            <ul class="list-unstyled row text-center m-5 categories">
+                <li data-class="all" class="col-md active">الكل</li>
+                {% for category in categories %}
+                <li data-class=".category_{{category.id}}" class="col-md">
+                    {{category.category_name}}
+                </li>
+                {% endfor %}
+            </ul>
+        </header>
+
+        <article class="row row-cols-1 row-cols-lg-2">
+            {% for service in services %}
+            <div class="service col mb-4 category_{{service.service_category.id}}">
+                <div class="card p-5 h-100">
+                    <span data-class=".category_{{service.service_category.id}}" class="category-tag badge">
+                        {{service.service_category}}
+                    </span>
+                    <div class="overlay"></div>
+                    <a href="{% url 'services:service_details' service.service_slug %}" class="btn btn-primary">
+                        مشاهدة التفاصيل
+                    </a>
+                    <figure>
+                        <img height="300" src="{{service.service_image.url}}" alt="{{service}}" class="card-img-top"
+                            title="{{service}}">
+                    </figure>
+                    <div class="card-body">
+                        <h5 class="card-title">{{service}}</h5>
+                        <p class="card-text">{{service.service_description}}</p>
+                        <span class="badge price-tag"><small>R.S </small>{{service.service_price}}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </article>
+    </section>
 </div>
-{% endfor %}
+{% endblock %}

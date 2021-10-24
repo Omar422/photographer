@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'home',
+    'portfolio',
     'service',
     'order',
 ]
@@ -66,7 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'accounts.context_processors.profile_slug'
+                'home.context_processors.base_processors'
             ],
         },
     },
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ar'
 
 TIME_ZONE = 'UTC'
 
@@ -141,3 +142,7 @@ LOGOUT_REDIRECT_URL ='/'
 
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
+
+
+# Slug Field Unicode
+ALLOW_UNICODE_SLUGS = True

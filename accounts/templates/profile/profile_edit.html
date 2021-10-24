@@ -1,4 +1,10 @@
-<h2>Profile Edit Page</h2>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header>
+    <h2>Profile Edit Page</h2>
+</header>
 
 <form method='POST'>
     {% csrf_token %}
@@ -6,3 +12,5 @@
     {{profile_form.as_p}}
     <input type="submit" value="Update Profile">
 </form>
+
+{% endblock %}

@@ -1,7 +1,17 @@
-<h2>Signup Form Page</h2>
+{% extends "base.html" %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{signup_form.as_p}}
-    <input type="submit" value="Signup">
-</form>
+{% block main-navbar %}
+{% endblock main-navbar %}
+
+{% block content %}
+
+<div class="mx-auto">
+    <h2>Signup Form Page</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{signup_form.as_p}}
+        <input type="submit" value="Signup">
+    </form>
+</div>
+
+{% endblock %}

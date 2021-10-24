@@ -1,24 +1,46 @@
-<h2>Categories Page</h2>
+{% extends 'base.html' %}
 
+{% block content %}
+<div class=container>
+  <section class="text-center categories mt-5">
+    <header class="mb-5">
+      <h4>الأقسام &hearts; </h4>
+    </header>
 
-{% if user.is_authenticated %}
-<!-- {{user_profile}} -->
-<a href="{% url 'accounts:profile' profile_slug %}">Profile</a>
-<a href="{% url 'orders:order_list' %}">Cart</a>
-<a href="accounts/logout">Logout</a>
-{% else %}
-<a href="{% url 'login' %}">Login</a>
-<a href="{% url 'accounts:signup' %}">Signup</a>
-{% endif %}
+    {% for category in categories %}
+    <article class="category card mb-3">
+      <div class="row no-gutters">
+        <figure class="col-md-4">
+          <img src="{{category.category_image.url}}" alt="{{category}}">
+        </figure>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{category.category_name}}</h5>
+            <p class="card-text">{{category.category_description}}</p>
+            <footer class="pt-5">
+              <a href="{% url 'category_details' category.category_slug %}" class="btn btn-primary">مشاهدة العروض</a>
+            </footer>
 
+          </div>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+    <!-- 
+    {% for category in categories %}
 
-{% for category in categories %}
-<p>
-    <a href="{% url 'category_details' category.category_slug %}">
-        <img src="{{category.category_image.url}}" width="200" height="200" alt="{{category}}" title="{{category}}">
-    </a>
-</p>
-<p>
-    <a href="{% url 'category_details' category.category_slug %}" target="_blank">{{category}}</a>
-</p>
-{% endfor %}
+    <article class="category card mb-3">
+      <figure>
+        <img src="{{category.category_image.url}}" class="card-img-top" alt="...">
+      </figure>
+      <div class="card-body">
+        <h5 class="card-title">{{category.category_name}}</h5>
+        <p class="card-text">{{category.category_description}}</p>
+        <a href="{% url 'category_details' category.category_slug %}" class="btn btn-primary">مشاهدة العروض</a>
+      </div>
+    </article>
+    {% endfor %} -->
+
+  </section>
+</div>
+{% endblock content %}
