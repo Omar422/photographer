@@ -1,18 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
+    <section class="text-center mt-5 row profile">
+        <article class="col-md">
+            <header class="text-center profile-header">
+                <h2>معلوماتي</h2>
+                <a href="{% url 'accounts:profile_edit' %}">
+                    <i class="fa fa-edit" title="تحديث المعلومات"></i>
+                </a>
+                <a href="{% url 'password_change' %}">
+                    <i class="fa fa-lock" title="تغيير كلمة المرور"></i>
+                </a>
+                <hr>
+            </header>
+            <article class="text-right profile-info">
+                {% if user_profile.user.first_name and user_profile.user.last_name %}
+                <h3 class="mb-5">
+                    <i class="fa fa-user profile-info-icon"></i>
+                    {{user_profile.user.first_name}} {{user_profile.user.last_name}}
+                </h3>
+                {% endif %}
 
-<header>
-    <h2>Profile Page</h2>
-</header>
-<article>
-    <h4>{{user_profile.user}}</h4>
-    <h4>{{user_profile.user.email}}</h4>
-    <h4>{{user_profile.phone}}</h4>
-    <h4>{{user_profile.address}}</h4>
-</article>
-<footer>
-    <p><a href="{% url 'password_change' %}">Change Password</a></p>
-    <p><a href="{% url 'accounts:profile_edit' %}">Edit Profile</a></p>
-</footer>
+                {% if user_profile.user.email %}
+                <h3 class="mb-5">
+                    <i class="fa fa-envelope profile-info-icon"></i>
+                    {{user_profile.user.email}}
+                </h3>
+                {% endif %}
+
+
+                {% if user_profile.user_phone %}
+                <h3 class="mb-5">
+                    <i class="fa fa-phone profile-info-icon"></i>
+                    {{user_profile.user_phone}}
+                </h3>
+                {% endif %}
+
+
+                {% if user_profile.user_address %}
+                <h3 class="mb-5">
+                    <i class="fa fa-map-marker-alt profile-info-icon"></i>
+                    {{user_profile.user_address}}
+                </h3>
+                {% endif %}
+
+            </article>
+        </article>
+    </section>
+</div>
 {% endblock content %}

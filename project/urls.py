@@ -25,8 +25,8 @@ from service.views import (
 )
 
 urlpatterns = [
-    path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     # path('', RedirectView.as_view(url='portfolio')),
     path('', home_page, name='home'),

@@ -12,7 +12,7 @@ $(function () {
 	$('.main-slider .carousel-indicators .rounded-circle:first').addClass('active');
 
 	// login + signup bg # TO DO
-	$('.userlogin, .loginbg').height(window_hight);
+	$('.userlogin, .userbg, .userview').height(window_hight);
 
 
 	// Partner Slider
@@ -66,7 +66,7 @@ $(function () {
 
 	// portfolio categories filter from tag
 	$('.portfolio .event header span').on('click', function () {
-		$('.portfolio .event header span').addClass('active').siblings().removeClass('active');
+		$(this).addClass('active').siblings().removeClass('active');
 		$('.portfolio .event .card').fadeOut(300);
 		$($(this).data('class')).fadeIn(300);
 		$('.portfolio ul.categories li[data-class="' + $(this).data('class') + '"]').addClass('active').siblings().removeClass('active');
@@ -117,4 +117,12 @@ $(function () {
 		}
 	});
 
+	///
+	$("#id_username").attr('placeholder', 'اسم المستخدم');
+	$("#id_password").attr('placeholder', 'كلمة المرور');
+	$('.signupcontent article #id_password1').addClass('pass1').attr("placeholder", "أدخل كلمة المرور");
+	$('.signupcontent article #id_password2').addClass('pass2').attr("placeholder", "أعد إدخال كلمة المرور");
+
+	// profile
+	
 });

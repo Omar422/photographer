@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block upper-navbar %}
+{% endblock upper-navbar %}
+{% block main-navbar %}
+{% endblock main-navbar %}
+
+{% block slider %}
+<section class="userjoin text-center">
+    <section class="userbg">
+        <article class="mx-0 userview">
+            <div class="container">
+                <div class="row accountcontent logincontent active">
+                    <div class="col-md-5 bg-light accountbg p-5">
+                        <article>
+                            <figure class="mb-5">
+                                <a target="_blank" href="/">
+                                    <img src="{% static 'img/login.jpg' %}" alt="AM" title="AM">
+                                </a>
+                            </figure>
+                            <h3>مرحبا بعودتك &hearts;</h3>
+                            <footer>ليس لديك حساب؟
+                                <a id="signup" href="#">أنشئ الآن</a>
+                            </footer>
+                        </article>
+                    </div>
+                    <div class="col-md-7 my-auto loginform p-5">
+                        <header class="mb-5">
+                            <h3>تسجيل الدخول &hearts;</h3>
+                        </header>
+                        <form method="post">
+                            {% csrf_token %}
+                            <article class="form-group row mb-4">
+                                <div class="col-md-1 mt-1">
+                                    <label for="{{login_form.username.id_for_label }}">
+                                        <i class="fas fa-user fa-2x" style="cursor: pointer;"></i>
+                                    </label>
+                                </div>
+                                <div class="col-md-11 accountinput">
+                                    {{ login_form.username }}
+                                </div>
+                            </article>
+                            <article class="form-group row">
+                                <div class="col-md-1 mt-1">
+                                    <label for="{{login_form.password.id_for_label }}">
+                                        <i class="fas fa-lock fa-2x" style="cursor: pointer;"></i>
+                                    </label>
+                                </div>
+                                <div class="col-md-11 accountinput">
+                                    {{ login_form.password }}
+                                </div>
+                                <!-- <label for="{{form.password.id_for_label }}">كلمة المرور:</label> -->
+                            </article>
+                            <footer>
+                                <a target="_blank" href="{% url 'password_reset' %}">
+                                    هل نسيت كلمة المرور؟
+                                </a>
+                                <input class="btn btn-outline-success btn-lg btn-block mt-5" type="submit" value="دخول"
+                                    name="login" />
+                                <input type="hidden" name="next" value="{{ next }}" />
+                                {% if login_form.errors %}
+                                <p class="badge badge-secondary p-3 mt-5">
+                                    * هناك خطأ في اسم المستخدم أو كلمة المرور. حاول مرة أخرى.</p>
+                                {% endif %}
+
+                                {% if next %}
+                                {% if user.is_authenticated %}
+                                <p>Your account doesn't have access to this page. To proceed,
+                                    please login with an account that has access.</p>
+                                {% else %}
+                                <p class="badge badge-secondary p-3 mt-5">
+                                    فضلاً قم بتسجيل الدخول لتتمكن من الوصول لهذه الصفحة
+                                </p>
+                                {% endif %}
+                                {% endif %}
+                            </footer>
+                        </form>
+                    </div>
+                </div>
+                <div class="row accountcontent signupcontent">
+                    <div class="col-md-7 my-auto loginform p-5">
+                        <header class="mb-5">
+                            <h3>أنشئ حسابك الآن &hearts;</h3>
+                        </header>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <article class="form-group row mb-4">
+                                <div class="col-md-1 mt-1">
+                                    <label for="{{signup_form.username.id_for_label}}">
+                                        <i class="fas fa-user fa-2x" style="cursor: pointer;"></i>
+                                    </label>
+                                </div>
+                                <div class="col-md-11 accountinput">
+                                    {{ signup_form.username }}
+                                </div>
+                            </article>
+                            <article class="form-group row mb-4">
+                                <div class="col-md-1 mt-4">
+                                    <label for="{{signup_form.password1.id_for_label }}">
+                                        <i class="fas fa-lock fa-2x" style="cursor: pointer;"></i>
+                                    </label>
+                                </div>
+                                <div class="col-md-11 accountinput">
+                                    {{ signup_form.password1 }}
+                                    {{ signup_form.password2 }}
+                                </div>
+                                <!-- <label for="{{form.password.id_for_label }}">كلمة المرور:</label> -->
+                            </article>
+                            <article class="form-group row mb-4">
+                                <div class="col-md-1 mt-1">
+                                    <label for="{{signup_form.email.id_for_label}}">
+                                        <i class="fas fa-at fa-2x" style="cursor: pointer;"></i>
+                                    </label>
+                                </div>
+                                <div class="col-md-11 accountinput">
+                                    {{ signup_form.email }}
+                                </div>
+                            </article>
+                            <footer>
+                                <input class="btn btn-primary btn-lg btn-block mt-5" type="submit" value="تسجيل"
+                                    name="signup">
+                                {% if errors %}
+                                <p>Someting wrong</p>
+                                {% endif %}
+
+                            </footer>
+                        </form>
+                    </div>
+                    <div class="col-md-5 bg-light accountbg p-5">
+                        <article>
+                            <figure class="mb-5">
+                                <a target="_blank" href="/">
+                                    <img src="{% static 'img/login.jpg' %}" alt="AM" title="AM">
+                                </a>
+                            </figure>
+                            <h3>مرحبا بعودتك &hearts;</h3>
+                            <footer>لديك حساب مسبقا؟
+                                <a id="login" href="#">تسجيل الدخول</a>
+                            </footer>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</section>
+{% endblock %}
+
+{% block content %}
+{% endblock content %}
+
+{% block main-footer %}
+{% endblock main-footer %}

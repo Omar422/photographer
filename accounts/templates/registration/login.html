@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block upper-navbar %}
 {% endblock upper-navbar %}
@@ -6,49 +7,81 @@
 {% endblock main-navbar %}
 
 {% block slider %}
+<section class="userjoin text-center">
+  <section class="userbg">
+    <article class="mx-0 userview">
+      <div class="container">
+        <div class="row accountcontent logincontent active">
+          <div class="col-md-5 bg-light accountbg p-5">
+            <article>
+              <figure class="mb-5">
+                <a target="_blank" href="/">
+                  <img src="{% static 'img/login.jpg' %}" alt="AM" title="AM">
+                </a>
+              </figure>
+              <h3>مرحبا بعودتك &hearts;</h3>
+              <footer>ليس لديك حساب؟
+                <a href="{% url 'accounts:signup' %}">أنشئ الآن</a>
+              </footer>
+            </article>
+          </div>
+          <div class="col-md-7 my-auto loginform p-5">
+            <header class="mb-5">
+              <h3>تسجيل الدخول &hearts;</h3>
+            </header>
+            <form method="POST">
+              {% csrf_token %}
+              <!-- {{login_form}} -->
+              <article class="form-group row mb-4">
+                <div class="col-md-1 mt-1">
+                  <label for="{{login_form.username.id_for_label }}">
+                    <i class="fas fa-user fa-2x" style="cursor: pointer;"></i>
+                  </label>
+                </div>
+                <div class="col-md-11 accountinput">
+                  {{ login_form.username }}
+                </div>
+              </article>
+              <article class="form-group row">
+                <div class="col-md-1 mt-1">
+                  <label for="{{login_form.password.id_for_label }}">
+                    <i class="fas fa-lock fa-2x" style="cursor: pointer;"></i>
+                  </label>
+                </div>
+                <div class="col-md-11 accountinput">
+                  {{ login_form.password }}
+                </div>
+                <!-- <label for="{{form.password.id_for_label }}">كلمة المرور:</label> -->
+              </article>
+              <footer>
+                <a target="_blank" href="{% url 'password_reset' %}">
+                  هل نسيت كلمة المرور؟
+                </a>
+                <input class="btn btn-outline-success btn-lg btn-block mt-5" type="submit" value="دخول" name="login" />
+                <input type="hidden" name="next" value="{{ next }}" />
+                {% if login_form.errors %}
+                <p class="badge badge-secondary p-3 mt-5">
+                  * هناك خطأ في اسم المستخدم أو كلمة المرور. حاول مرة أخرى.</p>
+                {% endif %}
 
-<div class="userlogin bg-dark">
-  <div class="row mx-0 loginbg" style="">
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-8 loginform">
-      <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <table class="mx-auto">
-          <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-          </tr>
-          <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-          </tr>
-        </table>
-        <footer>
-          <input type="submit" value="login" />
-          <input type="hidden" name="next" value="{{ next }}" />
-          {% if form.errors %}
-          <p>Your username and password didn't match. Please try again.</p>
-          {% endif %}
-
-          {% if next %}
-          {% if user.is_authenticated %}
-          <p>Your account doesn't have access to this page. To proceed,
-            please login with an account that has access.</p>
-          {% else %}
-          <p>Please login to see this page.</p>
-          {% endif %}
-          {% endif %}
-
-          {# Assumes you setup the password_reset view in your URLconf #}
-          <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-        </footer>
-      </form>
-    </div>
-  </div>
-</div>
-
+                {% if next %}
+                {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                  please login with an account that has access.</p>
+                {% else %}
+                <p class="badge badge-secondary p-3 mt-5">
+                  فضلاً قم بتسجيل الدخول لتتمكن من الوصول لهذه الصفحة
+                </p>
+                {% endif %}
+                {% endif %}
+              </footer>
+            </form>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+</section>
 {% endblock %}
 
 {% block content %}

@@ -7,10 +7,10 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_('User'), related_name='user_id')
-    user_phone = models.CharField(max_length=15, blank=True, null=True, verbose_name=_('Phone'))
-    user_address = models.CharField(max_length=50, blank=True, null=True, verbose_name=_('Address'))
-    user_slug = models.SlugField(verbose_name=_("User URL"), blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_('المستخدم'), related_name='user_id')
+    user_phone = models.CharField(max_length=15, blank=True, null=True, verbose_name=_('الجوال'))
+    user_address = models.CharField(max_length=50, blank=True, null=True, verbose_name=_('العنوان'))
+    user_slug = models.SlugField(verbose_name=_("الرابط"), blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.user_slug = slugify(self.user.username)

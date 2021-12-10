@@ -1,16 +1,49 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
+    <section class="text-center mt-5 profile-edit">
 
-<header>
-    <h2>Profile Edit Page</h2>
-</header>
+        <header class="text-center">
+            <h2>تحديث معلوماتي</h2>
+            <hr>
+        </header>
 
-<form method='POST'>
-    {% csrf_token %}
-    {{user_form.as_p}}
-    {{profile_form.as_p}}
-    <input type="submit" value="Update Profile">
-</form>
-
+        <article class="text-center row profile-edit-info my-3">
+            <form method='POST'>
+                {% csrf_token %}
+                <div class="col input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="{{user_form.first_name.id_for_label}}">
+                            الاسم الأول والأخير
+                        </label>
+                        <!-- <span class="input-group-text" id="">الاسم الأول والأخير</span> -->
+                    </div>
+                    {% for u in user_form %}
+                    {{u}}
+                    {% endfor %}
+                </div>
+                <div class="col input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" class="input-group-text"
+                            for="{{profile_form.user_phone.id_for_label}}">
+                            رقم الجوال
+                        </label>
+                    </div>
+                    {{profile_form.user_phone}}
+                </div>
+                <div class="col input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" class="input-group-text"
+                            for="{{profile_form.user_address.id_for_label}}">
+                            العنوان
+                        </label>
+                    </div>
+                    {{profile_form.user_address}}
+                </div>
+                <input type="submit" class="btn btn-primary btn-block" value="تحديث">
+            </form>
+        </article>
+    </section>
+</div>
 {% endblock %}
