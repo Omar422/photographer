@@ -212,8 +212,27 @@ input:focus::input-placeholder{
 	width: 80%;
 } */
 
-
 /* start profile */
+
+/**/
+
+.passsword-change .passch-form {
+	width: 90%;
+}
+
+.passsword-change .passch-form .password-rules p {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.passsword-change .passch-form .password-rules ul {
+    width: fit-content;
+    font-weight: bold;
+    color: #800;
+    text-align: right;
+    list-style-type: disclosure-closed;
+}
+/**/
 
 /***** End accounts App *****/
 

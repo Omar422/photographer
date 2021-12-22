@@ -124,5 +124,14 @@ $(function () {
 	$('.signupcontent article #id_password2').addClass('pass2').attr("placeholder", "أعد إدخال كلمة المرور");
 
 	// profile
-	
+
+	// password
+
+	$('.password-rules p').addClass('row');
+	$('.password-rules p label').addClass('col-sm col-md-2');
+	$('.password-rules p input').addClass('col-sm col-md-10 form-control');
+	$('.password-rules p:first input').attr('placeholder', "كلمة المرور القديمة");
+	$('.password-rules p:nth-child(2) input').attr('placeholder', "كلمة المرور الجديدة");
+	$('.password-rules p:last input').attr('placeholder', "تأكيد كلمة المرور الجديدة");
+
 });
