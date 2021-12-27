@@ -125,7 +125,7 @@ $(function () {
 
 	// profile
 
-	// password
+	// change password form
 
 	$('.password-rules p').addClass('row');
 	$('.password-rules p label').addClass('col-sm col-md-2');
@@ -133,5 +133,14 @@ $(function () {
 	$('.password-rules p:first input').attr('placeholder', "كلمة المرور القديمة");
 	$('.password-rules p:nth-child(2) input').attr('placeholder', "كلمة المرور الجديدة");
 	$('.password-rules p:last input').attr('placeholder', "تأكيد كلمة المرور الجديدة");
+
+	// reset password form
+	$('.reset-form-input input').addClass('form-control').attr('placeholder', "أدخل البريد الإلكتروني الذي تم استخدامه في إنشاء الحساب");
+
+	// reset password done
+	$('.reset-confirm-input input').addClass('form-control');
+	$('.reset-confirm-input:first input').attr('placeholder', "كلمة المرور الجديدة");
+	$('.reset-confirm-input:last input').attr('placeholder', "تأكيد كلمة المرور الجديدة");
+
 
 });

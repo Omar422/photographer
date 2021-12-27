@@ -19,7 +19,7 @@
 
 </head>
 
-<body>
+<body class="{% block BodyClass %} main-body {% endblock %}">
 
     {% block upper-navbar %}
     <header class="upper-navbar p-4 bg-secondary text-center text-light">
@@ -105,7 +105,7 @@
 
     {% block main-footer %}
     <footer class="main-footer p-4 bg-secondary text-center text-light">
-        جميع الحقوق محفوظة
+        جميع الحقوق محفوظة &copy; <script>document.write(new Date().getFullYear())</script>
     </footer>
     {% endblock main-footer %}
 

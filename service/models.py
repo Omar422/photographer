@@ -9,14 +9,14 @@ class Service(models.Model):
     service_price = models.DecimalField(verbose_name=_("السعر"), max_digits=5, decimal_places=2)
     service_category = models.ForeignKey("Category", verbose_name=_("القسم"), on_delete=models.CASCADE)
     service_image = models.ImageField(upload_to="service/", verbose_name=_("الصورة"), blank=True, null=True)
-    service_slug = models.SlugField(verbose_name = _("الرابط"), blank=True, null=True, allow_unicode=True)
+    service_slug = models.SlugField(verbose_name = _("الرابط"), blank=True, null=True)
 
     class Meta:
         verbose_name = _("خدمة")
         verbose_name_plural = _("الخدمات")
 
     def save(self, *args, **kwargs):
-        self.service_slug = slugify(self.service_name)
+        self.service_slug = slugify(self.service_name, allow_unicode=True)
         super(Service, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -33,7 +33,7 @@ class Category(models.Model):
         verbose_name_plural = _("الأقسام")
 
     def save(self, *args, **kwargs):
-        self.category_slug = slugify(self.category_name)
+        self.category_slug = slugify(self.category_name, allow_unicode=True)
         super(Category, self).save(*args, **kwargs)
 
     def __str__(self):

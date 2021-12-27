@@ -34,7 +34,8 @@ urlpatterns = [
     path('services/', include('service.urls', namespace='services')),
     path('cart/', include('order.urls', namespace='orders')),
     path('categories', categories_list, name='categories'),
-    path('categories/<slug:categoryURL>', category_details, name='category_details')
+    # path('categories/<slug:categoryURL>', category_details, name='category_details')
+    path('categories/<str:categoryURL>', category_details, name='category_details')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

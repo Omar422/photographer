@@ -13,7 +13,7 @@ class Profile(models.Model):
     user_slug = models.SlugField(verbose_name=_("الرابط"), blank=True, null=True)
 
     def save(self, *args, **kwargs):
-        self.user_slug = slugify(self.user.username)
+        self.user_slug = slugify(self.user.username, allow_unicode=True)
         super(Profile, self).save(*args, **kwargs)
 
     def __str__(self):

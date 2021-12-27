@@ -10,5 +10,6 @@ urlpatterns = [
     path('login/', views.mylogin, name = 'login'),
     path('signup/', views.signup, name = 'signup'),
     path('profile/edit', views.profile_edit, name='profile_edit'),
-    path('profile/<slug:userURL>', views.profile, name='profile'),
+    # path('profile/<slug:userURL>', views.profile, name='profile'),
+    path('profile/<str:userURL>', views.profile, name='profile'),
 ]
