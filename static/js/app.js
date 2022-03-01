@@ -142,5 +142,11 @@ $(function () {
 	$('.reset-confirm-input:first input').attr('placeholder', "كلمة المرور الجديدة");
 	$('.reset-confirm-input:last input').attr('placeholder', "تأكيد كلمة المرور الجديدة");
 
+	// media query
+	// $(window).resize(function () {
+	// 	if ($(window).innerWidth() > 991) {
+	// 		$('.userjoin .userbg .userview .logincontent .accountbg').css('display', 'unset');
+	// 	}
+	// });
 
 });

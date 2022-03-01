@@ -49,7 +49,7 @@ input:focus::input-placeholder{
     top: 50%;
     left: 50%;
     transform: translate(-50%, 100%);
-    width: 60%;
+    width: 70%;
     background-color: #efefef;
     line-height: 1.8;
     padding: 13px 0;
@@ -155,15 +155,23 @@ input:focus::input-placeholder{
 }
 
 /* .userjoin .userbg .userview .accountcontent .loginform form article div:last-child input{ */
+.userjoin .userbg .userview .accountcontent .loginform form article .accountinput{
+	padding: 0 15px;
+}
 .userjoin .userbg .userview .accountcontent .loginform form article .accountinput input{
 	padding: 10px;
 	text-align: center;
 	border: 0;
 	border-radius: 5px;
-	width: 90%;
+	width: 100%;
 }
 .userjoin .userbg .userview .accountcontent .loginform form article .accountinput input.pass1{
 	margin-bottom: 1rem;
+}
+
+.userjoin .userbg .userview .accountcontent .loginform form footer .forgetpass a{
+	/* font-weight: bold; */
+	color: #fff;
 }
 
 /* end login */
@@ -493,3 +501,56 @@ ul.errorlist {
 	box-shadow: none;
 }
 /*end override bootstrp*/
+
+.mediashow {
+	display: none;
+}
+
+/***** Media *****/  
+@media only screen and (max-width: 991px) {
+
+	.mediashow {display: block;}
+	
+	.userjoin .userbg .userview .accountcontent {
+		margin: 0;
+		width: 100%;
+		background:none;
+		color: #fff;
+		border-radius: 0;
+	}
+	
+	.userjoin .userbg .userview .logincontent .accountbg,
+	.userjoin .userbg .userview .signupcontent .accountbg {
+		display: none;
+	}
+
+	/* .userjoin .userbg .userview .accountcontent .loginform form article div{
+		margin: 0;
+		padding: 0;
+	} */
+
+	/* .userjoin .userbg .userview .accountcontent .loginform form article .accountinput input{ */
+		/* padding: 20px 10px; */
+	/* } */
+	
+	.userjoin .userbg .userview .accountcontent .loginform form article div {
+		text-align: center;
+	}
+	.userjoin .userbg .userview .accountcontent .loginform form article div label {
+		font-size: 1rem!important;
+	}
+
+	.upper-navbar h1 {
+		font-size: 1.5rem;
+	}
+
+	.slider .carousel-inner h1 {
+		width: 90%;
+		font-size: 25px;
+	}
+
+	h1 {font-size: 2rem;}
+	h2 {font-size: 1.7rem;}
+	h4 {font-size: 1.5rem;}
+	h5 {font-size: 1rem;}
+}

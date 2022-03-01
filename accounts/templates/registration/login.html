@@ -15,7 +15,8 @@
     <article class="mx-0 userview">
       <div class="container">
         <div class="row accountcontent logincontent active">
-          <div class="col-md-5 bg-light accountbg p-5">
+          <!-- account background and signup link -->
+          <div class="col-lg-5 bg-light accountbg p-5">
             <article>
               <figure class="mb-5">
                 <a target="_blank" href="/">
@@ -28,7 +29,7 @@
               </footer>
             </article>
           </div>
-          <div class="col-md-7 my-auto loginform p-5">
+          <div class="col-lg-7 my-auto loginform p-5">
             <header class="mb-5">
               <h3>تسجيل الدخول &hearts;</h3>
             </header>
@@ -36,43 +37,50 @@
               {% csrf_token %}
               <!-- {{login_form}} -->
               <article class="form-group row mb-4">
-                <div class="col-md-1 mt-1">
+                <div class="col-1 mt-1">
                   <label for="{{login_form.username.id_for_label }}">
                     <i class="fas fa-user fa-2x" style="cursor: pointer;"></i>
                   </label>
                 </div>
-                <div class="col-md-11 accountinput">
+                <div class="col-11 accountinput">
                   {{ login_form.username }}
                 </div>
               </article>
-              <article class="form-group row">
-                <div class="col-md-1 mt-1">
+              <article class="row form-group mb-4">
+                <div class="col-1 mt-1">
                   <label for="{{login_form.password.id_for_label }}">
                     <i class="fas fa-lock fa-2x" style="cursor: pointer;"></i>
                   </label>
                 </div>
-                <div class="col-md-11 accountinput">
+                <div class="col-11 accountinput">
                   {{ login_form.password }}
                 </div>
                 <!-- <label for="{{form.password.id_for_label }}">كلمة المرور:</label> -->
               </article>
               <footer>
-                <a target="_blank" href="{% url 'password_reset' %}">
-                  هل نسيت كلمة المرور؟
-                </a>
-                <input class="btn btn-outline-success btn-lg btn-block mt-5" type="submit" value="دخول" name="login" />
+                <p class="text-left forgetpass">
+                  <a target="_blank" href="{% url 'password_reset' %}" class="text-decoration-none">
+                    هل نسيت كلمة المرور؟
+                  </a>
+                </p>
+                <input class="btn btn-success btn-lg btn-block my-4" type="submit" value="دخول" name="login" />
+                <p class="mediashow">
+                  ليس لديك حساب؟ <a href="{% url 'accounts:signup' %}">أنشئ الآن</a>
+                </p>
                 <input type="hidden" name="next" value="{{ next }}" />
                 {% if login_form.errors %}
-                <p class="badge badge-secondary p-3 mt-5">
+                <p class="badge badge-secondary p-3">
                   * هناك خطأ في اسم المستخدم أو كلمة المرور. حاول مرة أخرى.</p>
                 {% endif %}
 
                 {% if next %}
                 {% if user.is_authenticated %}
-                <p>Your account doesn't have access to this page. To proceed,
-                  please login with an account that has access.</p>
+                <p>
+                  Your account doesn't have access to this page. To proceed,
+                  please login with an account that has access.
+                </p>
                 {% else %}
-                <p class="badge badge-secondary p-3 mt-5">
+                <p class="badge badge-secondary p-3">
                   فضلاً قم بتسجيل الدخول لتتمكن من الوصول لهذه الصفحة
                 </p>
                 {% endif %}
